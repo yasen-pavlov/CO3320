@@ -13,7 +13,7 @@ mkdir -p $CWD/home
 
 #build image
 docker build -f Dockerfile.dev  \
-    -t muty/co3320-ngc-jupyter \
+    -t $USER/co3320-ngc-jupyter \
     --build-arg GID=$GID \
     --build-arg UID=$UID \
     --build-arg UNAME=$UNAME \
@@ -26,4 +26,4 @@ docker run --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --gpus all 
     -v $WORKBENCH_DIR:/workspace/workbench \
     -v $CWD/home:/home/$UNAME \
     -p 8888:8888 \
-    muty/co3320-ngc-jupyter
+    $USER/co3320-ngc-jupyter
