@@ -1,0 +1,31 @@
+#
+# This example Dockerfile illustrates a method to install
+# additional packages on top of NVIDIA's TensorFlow container image.
+#
+# To use this Dockerfile, use the `docker build` command.
+# See https://docs.docker.com/engine/reference/builder/
+# for more information.
+#
+FROM nvcr.io/nvidia/tensorflow:21.09-tf2-py3
+
+ARG UNAME=jupyter
+ARG GNAME=jupyter
+ARG UID=1000
+ARG GID=1000
+
+# Install my-extra-package-1 and my-extra-package-2
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3-pydot \
+        python3-pydot-ng \
+        graphviz \
+        sudo \
+      && \
+    rm -rf /var/lib/apt/lists/
+
+# Install pip packages
+RUN pip install pandas bs4 sklearn matplotlib mlxtend pydot pydotplus lxml
+
+# Add user
+RUN groupadd -f $GNAME -g $GID && useradd -r -u $UID -g $GNAME $UNAME && adduser $UNAME sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+USER $UNAME
