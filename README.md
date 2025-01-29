@@ -5,8 +5,7 @@
 Project files for the CO3320 project "Using deep learning and
 sentiment analysis to detect automated agents on social networks"
 
-The full [project report PDF](reports/YasenPavlov_130182535_CO3320_ProjectReport_2018‐19.pdf)
-can be found in the reports folder.
+You can read the full project report accompanying these files [here](reports/YasenPavlov_130182535_CO3320_ProjectReport_2018‐19.pdf).
 
 The project uses [jupyter notebook](https://jupyter.org),
 [Keras](https://keras.io) and [TensorFlow](https://www.tensorflow.org) to
